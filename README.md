@@ -113,6 +113,7 @@ sudo a2dismod php7.3
 sudo a2enmod proxy_fcgi setenvif
 sudo a2enconf php7.3-fpm
 sudo a2enmod fcgid
+sudo a2enmod rewrite
 sudo service php7.3-fpm restart
 sudo systemctl restart apache2
 ```
