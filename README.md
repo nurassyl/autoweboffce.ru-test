@@ -117,3 +117,10 @@ sudo service php7.3-fpm restart
 sudo systemctl restart apache2
 ```
 
+
+Configure app
+
+```bash
+vim config/
+```
+
