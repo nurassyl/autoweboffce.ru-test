@@ -125,3 +125,10 @@ Configure app
 vim config/
 ```
 
+
+Seed the database (admin password is 'admin1234567890')
+
+```bash
+php seed.php
+```
+
