@@ -8,3 +8,7 @@
 # Vagrant files
 .vagrant/
 
+
+# Env file
+env.json
+

@@ -126,6 +126,14 @@ vim config/
 ```
 
 
+Set APP env
+
+```bash
+cp -f env.development.json env.json # for development
+cp -f env.production.json env.json # for production
+```
+
+
 Seed the database (admin password is 'admin1234567890')
 
 ```bash
