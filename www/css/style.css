@@ -1,0 +1,24 @@
+.content {
+	padding: 15px;
+}
+
+textarea {
+	resize: vertical;
+	height: 100px;
+	max-height: 250px;
+	min-height: 100px;
+}
+
+.help-block {
+	display: none;
+}
+
+.alert {
+	display: none;
+}
+
+.form,
+.alert {
+	max-width: 400px;
+	margin: 15px auto;
+}

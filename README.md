@@ -140,3 +140,9 @@ Seed the database (admin password is 'admin1234567890')
 php seed.php
 ```
 
+
+Which MPM model Apache is running (event, worker, prefork)
+
+```bash
+apachectl -V | grep -i mpm # should return 'Server MPM: prefork'
+```
