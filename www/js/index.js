@@ -74,6 +74,8 @@ $('.form .btn').on('click', function() {
 						emailInput.parent().find('.help-block').show()
 						has_error = true
 					}
+				} else if(response.status == 429) {
+					alert('Limit, try later.')
 				}
 			} else {
 				alert('Error')

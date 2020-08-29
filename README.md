@@ -146,3 +146,13 @@ Which MPM model Apache is running (event, worker, prefork)
 ```bash
 apachectl -V | grep -i mpm # should return 'Server MPM: prefork'
 ```
+
+
+View the MySQL all queries log (recommended in development mode)
+
+```bash
+sudo bash -c 'echo -e "[mysqld]\ngeneral_log = on\ngeneral_log_file=/tmp/mysql_quires.log" >> /etc/mysql/my.cnf'
+sudo /etc/init.d/mysql restart
+sudo tail -f /tmp/mysql_quires.log
+```
+

@@ -64,7 +64,34 @@ if(mb_strlen($name) <= 0 || mb_strlen($name) > 15) {
 }
 
 
-$r = $db->query("INSERT INTO feedbacks (name, email, message) VALUES ('" . $db->real_escape_string($name) . "', '" . $db->real_escape_string($email) ."', '" . $db->real_escape_string($message) . "')");
+/**
+ * Get IP address of client
+ */
+
+$client_ip = $_SERVER['HTTP_CLIENT_IP'] ? $_SERVER['HTTP_CLIENT_IP'] : ($_SERVER['HTTP_X_FORWARDED_FOR'] ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR']);
+$remote_addr = $_SERVER['REMOTE_ADDR'];
+
+
+/**
+ * Check is bot?
+ */
+
+$limit = 20;
+
+$r = $db->query("SELECT COUNT(*) FROM feedbacks WHERE ((client_ip = '" . $client_ip . "' OR remote_addr = '" . $client_ip . "') OR (client_ip = '" . $remote_addr . "' OR remote_addr = '" . $remote_addr . "')) AND created_at >= DATE_SUB(NOW(), INTERVAL 24 HOUR) LIMIT " . $limit);
+
+if($r->fetch_array()[0] >= $limit) {
+	http_response_code(429);
+	echo 'Limit';
+	die();
+}
+
+
+/**
+ * Insert into database
+ */
+
+$r = $db->query("INSERT INTO feedbacks (name, email, message, client_ip, remote_addr) VALUES ('" . $db->real_escape_string($name) . "', '" . $db->real_escape_string($email) ."', '" . $db->real_escape_string($message) . "', '" . $db->real_escape_string($client_ip) . "', '" . $db->real_escape_string($remote_addr) . "')");
 
 if($r === true) {
 	http_response_code(201);
