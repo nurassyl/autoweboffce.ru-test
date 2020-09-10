@@ -137,7 +137,7 @@ cp -f env.production.json env.json # for production
 Seed the database (admin password is 'admin1234567890')
 
 ```bash
-php seed.php
+php ./src/seed.php
 ```
 
 

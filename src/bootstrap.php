@@ -41,5 +41,5 @@ if($env['env'] === 'development') {
  * Database
  */
 
-require_once(__DIR__ . '/../src/db.php');
+require_once(__DIR__ . '/db.php');
 
