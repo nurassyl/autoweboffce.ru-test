@@ -13,7 +13,7 @@ if($env['env'] === 'development') {
 	phpinfo();
 } else {
 	http_response_code(403);
-	include('404.html'); // provide your own HTML for the error page
+	include('403.html'); // provide your own HTML for the error page
 	die();
 }
 
